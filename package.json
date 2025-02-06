@@ -1,0 +1,20 @@
+{
+  "name": "rtr-reddit-extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4"
+  }
+}

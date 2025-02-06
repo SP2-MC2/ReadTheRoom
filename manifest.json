@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Reddit Moderator Extension",
+    "version": "1.0",
+    "description": "A browser extension to help Reddit moderators flag posts and comments.",
+    "permissions": ["activeTab", "scripting", "tabs", "storage"],
+    "host_permissions": ["*://*.reddit.com/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.reddit.com/*"],
+        "js": ["contentScript.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["contentScript.js"],
+        "matches": ["*://*.reddit.com/*"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup/index.html"
+    }
+  }
+  
