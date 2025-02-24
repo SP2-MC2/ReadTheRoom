@@ -25,7 +25,19 @@
       cursor: pointer;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
       position: relative; /* For badge positioning */
+      transition: background-color 0.2s ease;
     `;
+
+    // Add hover effect
+    button.addEventListener('mouseenter', () => {
+      button.style.backgroundColor = 'rgb(227, 241, 223)';
+      button.style.color = '#000';
+    });
+
+    button.addEventListener('mouseleave', () => {
+      button.style.backgroundColor = '#ff4500';
+      button.style.color = 'white';
+    });
 
     // Create badge
     const badge = document.createElement("div");
@@ -49,6 +61,7 @@
     `;
 
     button.addEventListener("click", () => {
+      console.log("ReadTheRoom button clicked"); // Debug log
       window.postMessage({ type: "OPEN_MODERATOR_PANEL" }, "*");
     });
 
@@ -223,8 +236,12 @@
 
   /** Show the side panel */
   function showSidePanel() {
-    createSidePanel();
-    document.getElementById("chakra-ui-modal").style.transform = "translateX(0%)";
+    console.log("Showing side panel"); // Debug log
+    if (!document.getElementById('read-the-room-root')) {
+      console.log("Creating React root"); // Debug log
+      createReactRoot();
+    }
+    window.postMessage({ type: "OPEN_MODERATOR_PANEL" }, "*");
   }
 
   /** Hide the side panel */
@@ -232,8 +249,15 @@
     document.getElementById("chakra-ui-modal").style.transform = "translateX(100%)";
   }
 
+  function createReactRoot() {
+    const root = document.createElement('div');
+    root.id = 'read-the-room-root';
+    document.body.appendChild(root);
+  }
+
   /** Initialize content script */
   function initialize() {
+    createReactRoot(); // Create React root on initialization
     const observer = new MutationObserver(() => {
       AddToRoomButton();
       ReadTheRoomButton();

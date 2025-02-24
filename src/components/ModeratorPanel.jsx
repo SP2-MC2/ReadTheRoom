@@ -19,13 +19,17 @@ import {
 } from "@chakra-ui/react";
 
 export const ModeratorPanel = ({ isOpen, onClose }) => {
+  console.log("ModeratorPanel render - isOpen:", isOpen);
+  
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="md" placement="right">
+    <Modal isOpen={isOpen} onClose={onClose} size="md">
+      <ModalOverlay />
       <ModalContent
         position="fixed"
         right={0}
         top={0}
         height="100vh"
+        width="400px"
         borderRadius="0"
         m={0}
       >
