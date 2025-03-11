@@ -6,6 +6,10 @@ from dotenv import load_dotenv
 import logging
 from datetime import datetime
 
+
+# Use this for fetch:
+# http://localhost:5000/api/mod/unmoderated
+
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
@@ -131,3 +135,4 @@ def get_mod_queue():
 
 if __name__ == '__main__':
     app.run(debug=True) 
+    
